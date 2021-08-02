@@ -1,6 +1,8 @@
-# vite-ssr-template
+# Frontend Templates
 
-This project is create with vite-plugin-ssr;
+## current batch:vite-ssr
+
+This project is create with vite-plugin-ssr;  
 ```
 npm init vite-plugin-ssr@latest
 ```
@@ -10,3 +12,9 @@ npm init vite-plugin-ssr@latest
 - [ ] eslint+prettier
 - [ ] i18n
 - [ ] scss
+- [ ] commit lint
+- [ ] vscode config
+
+## record
+npm i -D eslint
+eslint --init

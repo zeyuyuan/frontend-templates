@@ -9,6 +9,7 @@
 
 <script>
 import Counter from './_components/Counter.vue'
+
 const components = { Counter }
 export default { components }
 </script>

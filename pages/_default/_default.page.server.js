@@ -3,9 +3,6 @@ import { html } from 'vite-plugin-ssr'
 import { createApp } from './app'
 import logoUrl from './logo.svg'
 
-export { render }
-export { passToClient }
-
 // See https://vite-plugin-ssr.com/data-fetching
 const passToClient = ['pageProps', 'routeParams']
 
@@ -16,7 +13,9 @@ async function render(pageContext) {
   // See https://vite-plugin-ssr.com/html-head
   const { documentProps } = pageContext
   const title = (documentProps && documentProps.title) || 'Vite SSR app'
-  const desc = (documentProps && documentProps.description) || 'App using Vite + vite-plugin-ssr'
+  const desc =
+    (documentProps && documentProps.description) ||
+    'App using Vite + vite-plugin-ssr'
 
   return html`<!DOCTYPE html>
     <html lang="en">
@@ -32,3 +31,6 @@ async function render(pageContext) {
       </body>
     </html>`
 }
+
+export { render }
+export { passToClient }

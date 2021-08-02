@@ -4,8 +4,6 @@ const { createPageRender } = require('vite-plugin-ssr')
 const isProduction = process.env.NODE_ENV === 'production'
 const root = `${__dirname}/..`
 
-startServer()
-
 async function startServer() {
   const app = express()
 
@@ -13,10 +11,11 @@ async function startServer() {
   if (isProduction) {
     app.use(express.static(`${root}/dist/client`, { index: false }))
   } else {
+    // eslint-disable-next-line global-require
     const vite = require('vite')
     viteDevServer = await vite.createServer({
       root,
-      server: { middlewareMode: true }
+      server: { middlewareMode: true },
     })
     app.use(viteDevServer.middlewares)
   }
@@ -25,7 +24,7 @@ async function startServer() {
   app.get('*', async (req, res, next) => {
     const url = req.originalUrl
     const pageContext = {
-      url
+      url,
     }
     const result = await renderPage(pageContext)
     if (result.nothingRendered) return next()
@@ -36,3 +35,5 @@ async function startServer() {
   app.listen(port)
   console.log(`Server running at http://localhost:${port}`)
 }
+
+startServer()
