@@ -13,5 +13,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'consistent-return': 'off',
+    'import/prefer-default-export': 'off',
+    camelcase: 'off',
   },
 }

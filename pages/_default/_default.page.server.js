@@ -4,12 +4,11 @@ import { createApp } from './app'
 import logoUrl from './logo.svg'
 
 // See https://vite-plugin-ssr.com/data-fetching
-const passToClient = ['pageProps', 'routeParams']
+const passToClient = ['pageProps', 'routeParams', 'language']
 
 async function render(pageContext) {
-  const app = createApp(pageContext)
+  const app = await createApp(pageContext)
   const appHtml = await renderToString(app)
-
   // See https://vite-plugin-ssr.com/html-head
   const { documentProps } = pageContext
   const title = (documentProps && documentProps.title) || 'Vite SSR app'
