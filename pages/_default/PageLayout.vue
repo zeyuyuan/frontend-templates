@@ -5,7 +5,8 @@
         <img src="./logo.svg" height="64" width="64" alt="logo" />
       </a>
       <a class="navitem" href="/">Home</a>
-      <a class="navitem" href="/demo">Demo</a>
+      <a class="navitem" href="/news/111">News Page</a>
+      <a class="navitem" href="/lang">Static Page</a>
     </div>
     <div class="content"><slot /></div>
   </div>

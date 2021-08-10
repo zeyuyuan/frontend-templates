@@ -1,26 +1,39 @@
 const express = require('express')
 const { createPageRender } = require('vite-plugin-ssr')
+const parser = require('accept-language-parser')
 
 const isProduction = process.env.NODE_ENV === 'production'
 const root = `${__dirname}/..`
 
-const SUPPORTED_LOCALES = ['en', 'cn']
+const SUPPORTED_LOCALES = ['en', 'zh']
 const DEFAULT_LOCALE = 'en'
 
-const extractLocaleFromPath = (path = '') => {
-  // eslint-disable-next-line no-unused-vars
-  const [_, mayBeLocale] = path.split('/')
-  if (SUPPORTED_LOCALES.includes(mayBeLocale)) {
-    return {
-      language: mayBeLocale,
-      path: path.replace(`/${mayBeLocale}`, ''),
-    }
-  }
-  return {
-    language: DEFAULT_LOCALE,
-    path,
-  }
+// Get the user's preferred language from accept-language
+const detectLanguage = (accept = '') =>
+  parser.pick(SUPPORTED_LOCALES, accept) || DEFAULT_LOCALE
+// todo support custom language set
+
+// add locale params to page path
+const fillPath = (path, locale) => {
+  const pathList = path.split('/')
+  pathList.splice(1, 0, locale)
+  return pathList.join('/')
 }
+
+// const extractLocaleFromPath = (path = '') => {
+//   const pathList = path.split('/')
+//   if (SUPPORTED_LOCALES.includes(pathList[1])) {
+//     return {
+//       language: pathList[1],
+//       path,
+//     }
+//   }
+//   pathList.splice(1, 0, DEFAULT_LOCALE)
+//   return {
+//     language: DEFAULT_LOCALE,
+//     path: pathList.join('/'),
+//   }
+// }
 
 async function startServer() {
   const app = express()
@@ -41,9 +54,9 @@ async function startServer() {
   const renderPage = createPageRender({ viteDevServer, isProduction, root })
   app.get('*', async (req, res, next) => {
     const url = req.originalUrl
-    const { path, language } = extractLocaleFromPath(url)
+    const language = detectLanguage(req.headers['accept-language'])
     const pageContext = {
-      url: path,
+      url: fillPath(url, language),
       language,
     }
     const result = await renderPage(pageContext)

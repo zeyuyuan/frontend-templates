@@ -1,5 +1,5 @@
 import en from './locales/en.json'
-import cn from './locales/cn.json'
+import zh from './locales/zh.json'
 
 // + server/index.js
 export const SUPPORTED_LANGUAGES = [
@@ -10,9 +10,9 @@ export const SUPPORTED_LANGUAGES = [
     messages: en,
   },
   {
-    locale: 'ch',
+    locale: 'zh',
     name: '中文',
-    messages: cn,
+    messages: zh,
   },
 ]
 
