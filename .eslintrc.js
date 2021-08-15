@@ -16,5 +16,6 @@ module.exports = {
   plugins: ["vue", "@typescript-eslint", "prettier"],
   rules: {
     "prettier/prettier": "error",
+    "vue/no-multiple-template-root": "off",
   },
 };
