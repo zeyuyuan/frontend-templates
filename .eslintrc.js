@@ -2,28 +2,19 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true,
-    jest: true,
   },
   extends: [
-    'airbnb-base',
+    "plugin:vue/essential",
+    "airbnb-base",
+    "plugin:prettier/recommended",
   ],
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
-    sourceType: 'module',
+    parser: "@typescript-eslint/parser",
+    sourceType: "module",
   },
-  plugins: [
-    '@typescript-eslint',
-  ],
+  plugins: ["vue", "@typescript-eslint", "prettier"],
   rules: {
-    'import/extensions': 'off',
-  },
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-    },
+    "prettier/prettier": "error",
   },
 };
