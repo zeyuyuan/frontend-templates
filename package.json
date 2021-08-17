@@ -1,0 +1,33 @@
+{
+  "name": "ui-package-svelte",
+  "svelte": "src/index.js",
+  "module": "dist/index.mjs",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeyuyuan/frontend-templates.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zeyuyuan/frontend-templates/issues"
+  },
+  "homepage": "https://github.com/zeyuyuan/frontend-templates#readme",
+  "author": "yzy@pcomg.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "rollup": "^2.0.0",
+    "rollup-plugin-svelte": "^6.0.0",
+    "svelte": "^3.0.0"
+  },
+  "keywords": [
+    "svelte"
+  ],
+  "files": [
+    "src",
+    "dist"
+  ]
+}
