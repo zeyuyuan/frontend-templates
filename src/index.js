@@ -1,1 +1,2 @@
-export { default as default } from './Component.svelte';
+export { default as BaseButton } from "./BaseButton.svelte";
+export { default as BaseDialog } from "./BaseDialog.svelte";

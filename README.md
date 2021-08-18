@@ -7,10 +7,11 @@ This project is create with https://github.com/sveltejs/component-template.
 
 ## Added features
 
-- [ ] web component
-- [ ] examples
-- [ ] eslint+prettier
+- [x] web component
+- [ ] build .min.js
+- [x] examples
+- [x] eslint+prettier(format .svelte with svelte for vscode)
 - [ ] storybook
 - [ ] commitlint
-- [ ] vscode config
+- [x] vscode config
 - [ ] unit test
