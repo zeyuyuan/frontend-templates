@@ -14,6 +14,7 @@ module.exports = {
     'prettier/prettier': 'error',
     'consistent-return': 'off',
     'import/prefer-default-export': 'off',
+    'global-require': 'off',
     camelcase: 'off',
   },
 }
