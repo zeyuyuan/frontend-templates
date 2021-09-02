@@ -10,14 +10,13 @@
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^1.6.0",
-    "@vue/compiler-sfc": "^3.2.6",
-    "@vue/server-renderer": "^3.2.6",
+    "@vue/compiler-sfc": "^3.2.7",
+    "@vue/server-renderer": "^3.2.7",
     "accept-language-parser": "^1.5.0",
     "cross-env": "^7.0.3",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.1",
-    "vite": "^2.5.1",
-    "vite-plugin-ssr": "^0.2.11",
+    "vite": "^2.5.3",
+    "vite-plugin-ssr": "^0.2.12",
     "vue": "^3.2.6",
     "vue-i18n": "^9.1.7"
   },
@@ -28,11 +27,11 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-prettier": "^3.4.1",
-    "eslint-plugin-vue": "^7.15.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^7.17.0",
     "husky": "^7.0.2",
     "prettier": "^2.3.2",
-    "sass": "^1.38.1"
+    "sass": "^1.39.0"
   },
   "husky": {
     "hooks": {

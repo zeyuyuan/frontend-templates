@@ -1,1 +1,1 @@
-export default '/:locale/news/:id'
+export default '/news/:id'
