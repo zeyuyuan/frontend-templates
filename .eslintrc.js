@@ -17,4 +17,10 @@ module.exports = {
     'global-require': 'off',
     camelcase: 'off',
   },
+  globals: {
+    defineProps: 'readonly',
+    defineEmits: 'readonly',
+    defineExpose: 'readonly',
+    withDefaults: 'readonly',
+  },
 }
