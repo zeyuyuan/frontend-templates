@@ -1,10 +1,11 @@
 import { renderToString } from '@vue/server-renderer'
 import { html } from 'vite-plugin-ssr'
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '../i18n/list'
 import { createApp } from './app'
 import logoUrl from './logo.svg'
 
 // See https://vite-plugin-ssr.com/data-fetching
-export const passToClient = ['pageProps', 'urlPathname']
+export const passToClient = ['pageProps', 'urlPathname', 'locale']
 
 export const render = async (pageContext) => {
   const app = createApp(pageContext)
@@ -30,4 +31,28 @@ export const render = async (pageContext) => {
         <div id="app">${html.dangerouslySkipEscape(appHtml)}</div>
       </body>
     </html>`
+}
+
+export const _onBeforePrerender = (globalContext) => {
+  const prerenderPageContexts = []
+  globalContext.prerenderPageContexts.forEach((pageContext) => {
+    prerenderPageContexts.push({
+      ...pageContext,
+      locale: DEFAULT_LOCALE,
+    })
+    SUPPORTED_LOCALES.filter((locale) => locale !== DEFAULT_LOCALE).forEach(
+      (locale) => {
+        prerenderPageContexts.push({
+          ...pageContext,
+          url: `/${locale}${pageContext.url}`,
+          locale,
+        })
+      }
+    )
+  })
+  return {
+    globalContext: {
+      prerenderPageContexts,
+    },
+  }
 }

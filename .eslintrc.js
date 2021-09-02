@@ -16,11 +16,13 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'global-require': 'off',
     camelcase: 'off',
+    'no-underscore-dangle': 'off',
   },
   globals: {
     defineProps: 'readonly',
     defineEmits: 'readonly',
     defineExpose: 'readonly',
     withDefaults: 'readonly',
+    $pageContext: 'readonly',
   },
 }

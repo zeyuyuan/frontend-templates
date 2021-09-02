@@ -5,11 +5,9 @@
     <li>Rendered to HTML.</li>
     <li>Interactive. <Counter /></li>
   </ul>
+  <div>{{ $pageContext.locale }}</div>
 </template>
 
-<script>
+<script setup>
 import Counter from '../../components/Counter.vue'
-
-const components = { Counter }
-export default { components }
 </script>

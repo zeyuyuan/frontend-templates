@@ -10,6 +10,7 @@ npm init vite-plugin-ssr@latest
 
 ## Added features
 
+- [x] pre-render by default
 - [x] data fetch demo
 - [x] eslint+prettier
 - [x] i18n
@@ -19,11 +20,8 @@ npm init vite-plugin-ssr@latest
 - [x] pre-render static page
 - [ ] no longer rely on adding route/server.js
 
-## i18n use case
+## I18n feature
 
-### 1.(recommend)use request header to detect language, prerender pages with all language.  
-current solution: detect language and redirect path in middleware of server.js,
-add xx.page.route.js and xx.page.server.js for every page, 'doNotPrerender' for no-prerender pages.  
-
-### 2.use path params to detect language, prerender pages with all language.
-current solution: 1 + client route should keep path params.
+- set language by browser set(http header)
+- set language by cookie
+- set language by url（set cookie at the same time）, for example `/en/about`(will lose /en after route and )
