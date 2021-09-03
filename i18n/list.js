@@ -1,18 +1,12 @@
-import en from './locales/en.json'
-import zh from './locales/zh.json'
-
-// + server/index.js
 export const SUPPORTED_LANGUAGES = [
   {
     locale: 'en',
     name: 'English',
     default: true,
-    messages: en,
   },
   {
     locale: 'zh',
     name: '中文',
-    messages: zh,
   },
 ]
 

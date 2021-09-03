@@ -8,7 +8,7 @@ import logoUrl from './logo.svg'
 export const passToClient = ['pageProps', 'urlPathname', 'locale']
 
 export const render = async (pageContext) => {
-  const app = createApp(pageContext)
+  const app = await createApp(pageContext)
   const appHtml = await renderToString(app)
 
   // See https://vite-plugin-ssr.com/html-head

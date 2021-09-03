@@ -1,5 +1,6 @@
 {
   "name": "frontend-template",
+  "version": "0.0.1",
   "scripts": {
     "dev": "npm run server",
     "prod": "npm run build && npm run server:prod",
@@ -14,8 +15,10 @@
     "@vue/compiler-sfc": "^3.2.7",
     "@vue/server-renderer": "^3.2.7",
     "accept-language-parser": "^1.5.0",
+    "cookie-parser": "^1.4.5",
     "cross-env": "^7.0.3",
     "express": "^4.17.1",
+    "js-cookie": "^3.0.1",
     "vite": "^2.5.3",
     "vite-plugin-ssr": "^0.2.12",
     "vue": "^3.2.6",

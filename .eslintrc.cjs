@@ -15,8 +15,9 @@ module.exports = {
     'consistent-return': 'off',
     'import/prefer-default-export': 'off',
     'global-require': 'off',
-    camelcase: 'off',
     'no-underscore-dangle': 'off',
+    'import/extensions': 'off',
+    camelcase: 'off',
   },
   globals: {
     defineProps: 'readonly',

@@ -5,7 +5,6 @@
     <li>Rendered to HTML.</li>
     <li>Interactive. <Counter /></li>
   </ul>
-  <div>{{ $pageContext.locale }}</div>
 </template>
 
 <script setup>

@@ -2,6 +2,7 @@
   <h1>This page should render in request-time</h1>
   <p>news id {{ props.id }}</p>
   <div>{{ mock }}</div>
+  <div>{{ $pageContext.locale }}</div>
 </template>
 
 <script setup>
