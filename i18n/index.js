@@ -29,7 +29,7 @@ export async function installI18n(app, locale = DEFAULT_LOCALE) {
   app.use(i18n)
 }
 
-export const extractLocale = (url, defaultLang) => {
+export const extractLocale = (url) => {
   const urlPaths = url.split('/')
   let locale = ''
   let urlWithoutLocale = ''
@@ -39,7 +39,7 @@ export const extractLocale = (url, defaultLang) => {
     locale = firstPath
     urlWithoutLocale = `/${urlPaths.slice(2).join('/')}`
   } else {
-    locale = defaultLang
+    locale = DEFAULT_LOCALE
     urlWithoutLocale = url
   }
   return { locale, urlWithoutLocale }

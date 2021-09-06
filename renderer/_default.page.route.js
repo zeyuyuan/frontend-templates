@@ -1,7 +1,7 @@
 import { extractLocale } from '../i18n'
 
-const _onBeforeRoute = ({ url, defaultLang }) => {
-  const { urlWithoutLocale, locale } = extractLocale(url, defaultLang)
+const _onBeforeRoute = ({ url }) => {
+  const { urlWithoutLocale, locale } = extractLocale(url)
 
   return {
     pageContext: {

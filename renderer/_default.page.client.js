@@ -1,6 +1,5 @@
 import { getPage } from 'vite-plugin-ssr/client'
 import { createApp } from './app'
-import { keepClientPathLang } from '../i18n/control'
 
 const hydrate = async () => {
   // For Client Routing we should use `useClientRouter()` instead of `getPage()`.
@@ -11,6 +10,3 @@ const hydrate = async () => {
 }
 
 hydrate()
-
-// need to call keepClientPathLang in other custom client.js
-keepClientPathLang()
