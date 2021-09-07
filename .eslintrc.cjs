@@ -26,4 +26,12 @@ module.exports = {
     withDefaults: 'readonly',
     $pageContext: 'readonly',
   },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['~', './']],
+        extensions: ['.js', '.jsx', '.vue'],
+      },
+    },
+  },
 }

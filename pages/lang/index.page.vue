@@ -9,7 +9,7 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
-import SwitchLocale from '../../components/SwitchLocale.vue'
+import SwitchLocale from '~/components/SwitchLocale.vue'
 
 const { t } = useI18n()
 </script>
