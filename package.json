@@ -10,6 +10,7 @@
     "server:prod": "cross-env NODE_ENV=production node ./server",
     "postinstall": "husky install"
   },
+  "license": "MIT",
   "type": "module",
   "dependencies": {
     "@vitejs/plugin-vue": "^1.6.1",

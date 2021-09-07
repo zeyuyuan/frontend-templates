@@ -43,23 +43,9 @@ or start a static file server:
 PORT=3000 npm run prod:static
 ```
 
-### For pure ssr product, we need to start a node server:
+### For ssr/ssg product, we need to start a node server:
 
 ```shell
 npm install
 PORT=3000 npm run prod
-```
-
-### For ssr and ssg product, we need to handle ssr and ssg separately:
-
-```shell
-npm install
-PORT=3000 npm run prod
-```
-
-and use nginx redirect all ssg pages to dist/client,  
-or a static file server:
-
-```shell
-PORT=3001 npm run prod:static
 ```
