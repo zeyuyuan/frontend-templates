@@ -18,6 +18,7 @@ Use ssg(pre-render) by default, use [doNotPrerender](https://vite-plugin-ssr.com
 - [x] vscode config
 - [x] pre-render static page
 - [x] no longer rely on adding route/server.js
+- [x] add sanitize.css
 
 ## I18n
 

@@ -5,6 +5,13 @@ import { fileURLToPath } from 'url'
 
 export default {
   plugins: [vue(), ssr()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "~/styles/global.scss";`,
+      },
+    },
+  },
   resolve: {
     alias: {
       '~': dirname(fileURLToPath(import.meta.url)),

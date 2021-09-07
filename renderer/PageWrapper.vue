@@ -16,17 +16,8 @@
 import Link from '~/components/Link.vue'
 </script>
 
-<style>
-body {
-  margin: 0;
-  font-family: sans-serif;
-}
-* {
-  box-sizing: border-box;
-}
-a {
-  text-decoration: none;
-}
+<style lang="scss">
+@import '~/styles/index.scss';
 </style>
 
 <style scoped>

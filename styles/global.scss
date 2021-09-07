@@ -1,0 +1,15 @@
+// Already add to global by vite scss additionalData.
+
+$bg: green;
+
+@mixin mobile {
+  @media (max-width: 750px) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media (min-width: 750px) {
+    @content;
+  }
+}
