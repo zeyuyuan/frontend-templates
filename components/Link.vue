@@ -1,7 +1,7 @@
 <template>
   <a
     :class="{ active: $pageContext.urlPathname === $attrs.href }"
-    :href="getPathWithLocale(href, locale)"
+    :href="getPathWithLocale(href, targetLocale || locale)"
   >
     <slot />
   </a>
@@ -14,7 +14,15 @@ import { getPathWithLocale } from '../i18n/control'
 const { locale } = useI18n()
 
 defineProps({
-  href: String,
+  href: {
+    type: String,
+    required: true,
+  },
+  targetLocale: {
+    type: String,
+    required: false,
+    default: '',
+  },
 })
 </script>
 

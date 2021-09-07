@@ -20,8 +20,9 @@ npm init vite-plugin-ssr@latest
 - [x] pre-render static page
 - [ ] no longer rely on adding route/server.js
 
-## I18n feature
+## I18n
 
-- set language by browser set(http header)
-- set language by cookie
-- set language by url（set cookie at the same time）, for example `/en/about`(will lose /en after route and )
+- Set languages in i18n/locales,Language codes refer to ISO 639-1.
+- Set SUPPORTED_LANGUAGES in i18n/list.js.
+- Set hreflang link in renderer/\_default.page.server.js.
+- Use components/Link.vue for route.

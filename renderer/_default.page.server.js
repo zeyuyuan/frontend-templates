@@ -12,19 +12,29 @@ export const render = async (pageContext) => {
   const appHtml = await renderToString(app)
 
   // See https://vite-plugin-ssr.com/html-head
-  const { documentProps } = pageContext
+  const { documentProps, locale, url } = pageContext
   const title = (documentProps && documentProps.title) || 'Vite SSR app'
   const desc =
     (documentProps && documentProps.description) ||
     'App using Vite + vite-plugin-ssr'
+  const keywords = 'Vite, SSR, SEO'
+  const origin = 'https://fe.com'
+  const getHref = (targetLocale) =>
+    `${origin}${
+      targetLocale === DEFAULT_LOCALE ? '' : `/${targetLocale}`
+    }${url}`
 
   return html`<!DOCTYPE html>
-    <html lang="en">
+    <html lang="${locale}">
       <head>
         <meta charset="UTF-8" />
         <link rel="icon" href="${logoUrl}" />
+        <link rel="alternate" hreflang="en" href="${getHref('en')}" />
+        <link rel="alternate" hreflang="zh" href="${getHref('zh')}" />
+        <link rel="alternate" hreflang="x-default" href="${getHref('en')}" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="${desc}" />
+        <meta name="keywords" content="${keywords}" />
         <title>${title}</title>
       </head>
       <body>
