@@ -2,9 +2,10 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    node: true,
   },
   extends: [
-    "plugin:vue/essential",
+    "plugin:vue/vue3-essential",
     "airbnb-base",
     "plugin:prettier/recommended",
   ],
@@ -16,6 +17,19 @@ module.exports = {
   plugins: ["vue", "@typescript-eslint", "prettier"],
   rules: {
     "prettier/prettier": "error",
-    "vue/no-multiple-template-root": "off",
+  },
+  globals: {
+    defineProps: "readonly",
+    defineEmits: "readonly",
+    defineExpose: "readonly",
+    withDefaults: "readonly",
+  },
+  settings: {
+    "import/resolver": {
+      alias: {
+        map: [["@", "./src"]],
+        extensions: [".js", ".jsx", ".ts", ".tsx", ".vue"],
+      },
+    },
   },
 };
