@@ -5,11 +5,16 @@
   "main": "dist/packagename.cjs.js",
   "module": "dist/packagename.es.js",
   "browser": "dist/packagename.js",
+  "types": "dist/packagename.d.ts",
   "scripts": {
-    "build": "rollup -c",
+    "build": "npm run clean && rollup -c",
     "prepublishOnly": "npm run build",
-    "lint": "eslint --fix 'src/**/*.ts'",
-    "test": "jest"
+    "lint": "eslint --fix --ext .js,.ts --ignore-path .gitignore src",
+    "test": "jest",
+    "clean": "rm -rf dist",
+    "doc": "rm -rf doc && typedoc --out docs src/index.ts",
+    "check": "npm-check",
+    "postinstall": "husky install"
   },
   "repository": {
     "type": "git",
@@ -28,17 +33,25 @@
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@rollup/plugin-typescript": "^8.2.5",
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^27.0.0",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
     "@typescript-eslint/parser": "^4.29.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "husky": "^7.0.2",
     "jest": "^27.0.6",
+    "prettier": "^2.4.0",
     "rollup": "^2.56.2",
+    "rollup-plugin-dts": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "ts-jest": "^27.0.4",
     "tslib": "^2.3.1",
+    "typedoc": "^0.22.3",
     "typescript": "^4.3.5"
   },
   "jest": {
@@ -57,5 +70,10 @@
     "testMatch": [
       "**/test/**/*.test.ts"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }

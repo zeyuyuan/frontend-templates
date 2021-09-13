@@ -1,13 +1,14 @@
-import { terser } from 'rollup-plugin-terser';
-import pluginTypescript from '@rollup/plugin-typescript';
-import pluginCommonjs from '@rollup/plugin-commonjs';
-import pluginNodeResolve from '@rollup/plugin-node-resolve';
-import { babel } from '@rollup/plugin-babel';
-import * as path from 'path';
-import pkg from './package.json';
+import { terser } from "rollup-plugin-terser";
+import pluginTypescript from "@rollup/plugin-typescript";
+import pluginCommonjs from "@rollup/plugin-commonjs";
+import pluginNodeResolve from "@rollup/plugin-node-resolve";
+import { babel } from "@rollup/plugin-babel";
+import * as path from "path";
+import dts from "rollup-plugin-dts";
+import pkg from "./package.json";
 
-const moduleName = pkg.name.replace(/^@.*\//, '');
-const inputFileName = 'src/index.ts';
+const moduleName = pkg.name.replace(/^@.*\//, "");
+const inputFileName = "src/index.ts";
 const { author } = pkg;
 const banner = `
   /**
@@ -25,15 +26,15 @@ export default [
       {
         name: moduleName,
         file: pkg.browser,
-        format: 'iife',
-        sourcemap: 'inline',
+        format: "iife",
+        sourcemap: "inline",
         banner,
       },
       {
         name: moduleName,
-        file: pkg.browser.replace('.js', '.min.js'),
-        format: 'iife',
-        sourcemap: 'inline',
+        file: pkg.browser.replace(".js", ".min.js"),
+        format: "iife",
+        sourcemap: "inline",
         banner,
         plugins: [terser()],
       },
@@ -41,11 +42,11 @@ export default [
     plugins: [
       pluginTypescript(),
       pluginCommonjs({
-        extensions: ['.js', '.ts'],
+        extensions: [".js", ".ts"],
       }),
       babel({
-        babelHelpers: 'bundled',
-        configFile: path.resolve(__dirname, '.babelrc.js'),
+        babelHelpers: "bundled",
+        configFile: path.resolve(__dirname, ".babelrc.js"),
       }),
       pluginNodeResolve({
         browser: true,
@@ -59,10 +60,10 @@ export default [
     output: [
       {
         file: pkg.module,
-        format: 'es',
-        sourcemap: 'inline',
+        format: "es",
+        sourcemap: "inline",
         banner,
-        exports: 'named',
+        exports: "named",
       },
     ],
     external: [
@@ -72,11 +73,11 @@ export default [
     plugins: [
       pluginTypescript(),
       pluginCommonjs({
-        extensions: ['.js', '.ts'],
+        extensions: [".js", ".ts"],
       }),
       babel({
-        babelHelpers: 'bundled',
-        configFile: path.resolve(__dirname, '.babelrc.js'),
+        babelHelpers: "bundled",
+        configFile: path.resolve(__dirname, ".babelrc.js"),
       }),
       pluginNodeResolve({
         browser: false,
@@ -90,10 +91,10 @@ export default [
     output: [
       {
         file: pkg.main,
-        format: 'cjs',
-        sourcemap: 'inline',
+        format: "cjs",
+        sourcemap: "inline",
         banner,
-        exports: 'default',
+        exports: "default",
       },
     ],
     external: [
@@ -101,17 +102,23 @@ export default [
       ...Object.keys(pkg.devDependencies || {}),
     ],
     plugins: [
-      pluginTypescript({ tsconfig: './tsconfig.json' }),
+      pluginTypescript({ tsconfig: "./tsconfig.json" }),
       pluginCommonjs({
-        extensions: ['.js', '.ts'],
+        extensions: [".js", ".ts"],
       }),
       babel({
-        babelHelpers: 'bundled',
-        configFile: path.resolve(__dirname, '.babelrc.js'),
+        babelHelpers: "bundled",
+        configFile: path.resolve(__dirname, ".babelrc.js"),
       }),
       pluginNodeResolve({
         browser: false,
       }),
     ],
+  },
+
+  {
+    input: "dist/index.d.ts",
+    output: [{ file: `dist/${moduleName}.d.ts`, format: "es" }],
+    plugins: [dts()],
   },
 ];

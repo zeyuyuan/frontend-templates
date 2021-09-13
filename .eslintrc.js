@@ -6,24 +6,28 @@ module.exports = {
     jest: true,
   },
   extends: [
-    'airbnb-base',
+    "airbnb-base",
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking", // It will slow down the lint performance
+    "plugin:promise/recommended",
+    "plugin:prettier/recommended",
   ],
-  parser: '@typescript-eslint/parser',
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 12,
-    sourceType: 'module',
+    sourceType: "module",
   },
-  plugins: [
-    '@typescript-eslint',
-  ],
+  plugins: ["@typescript-eslint", "prettier"],
   rules: {
-    'import/extensions': 'off',
+    "prettier/prettier": "error",
   },
   settings: {
-    'import/resolver': {
+    "import/resolver": {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
       },
     },
   },
+  ignorePatterns: ["dist"],
 };
