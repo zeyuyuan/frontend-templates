@@ -1,6 +1,6 @@
 import { extractLocale } from '../i18n'
 
-const _onBeforeRoute = ({ url }) => {
+const onBeforeRoute = ({ url }) => {
   const { urlWithoutLocale, locale } = extractLocale(url)
 
   return {
@@ -15,4 +15,4 @@ const _onBeforeRoute = ({ url }) => {
   }
 }
 
-export { _onBeforeRoute }
+export { onBeforeRoute }

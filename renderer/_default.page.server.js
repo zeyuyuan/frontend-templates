@@ -1,5 +1,5 @@
 import { renderToString } from '@vue/server-renderer'
-import { html } from 'vite-plugin-ssr'
+import { escapeInject, dangerouslySkipEscape } from 'vite-plugin-ssr'
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '../i18n/list'
 import { createApp } from './app'
 import logoUrl from './logo.svg'
@@ -24,7 +24,7 @@ export const render = async (pageContext) => {
       targetLocale === DEFAULT_LOCALE ? '' : `/${targetLocale}`
     }${url}`
 
-  return html`<!DOCTYPE html>
+  return escapeInject`<!DOCTYPE html>
     <html lang="${locale}">
       <head>
         <meta charset="UTF-8" />
@@ -38,12 +38,12 @@ export const render = async (pageContext) => {
         <title>${title}</title>
       </head>
       <body>
-        <div id="app">${html.dangerouslySkipEscape(appHtml)}</div>
+        <div id="app">${dangerouslySkipEscape(appHtml)}</div>
       </body>
     </html>`
 }
 
-export const _onBeforePrerender = (globalContext) => {
+export const onBeforePrerender = (globalContext) => {
   const prerenderPageContexts = []
   globalContext.prerenderPageContexts.forEach((pageContext) => {
     prerenderPageContexts.push({

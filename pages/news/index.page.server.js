@@ -3,17 +3,18 @@ const mockData = () =>
     resolve('data fetch in server!')
   })
 
-const addPageContext = async (pageContext) => {
+export const onBeforeRender = async (pageContext) => {
   const res = await mockData()
   const { id } = pageContext.routeParams
+  const pageProps = {
+    mock: res,
+    id,
+  }
   return {
-    pageProps: {
-      mock: res,
-      id,
+    pageContext: {
+      pageProps,
     },
   }
 }
-
-export { addPageContext }
 
 export const doNotPrerender = true
