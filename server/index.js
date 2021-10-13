@@ -26,10 +26,10 @@ const startServer = async () => {
     const url = req.originalUrl
     const pageContextInit = { url }
     const pageContext = await renderPage(pageContextInit)
-    if (!pageContext.httpResponse) return next()
-    res
-      .status(pageContext.httpResponse.statusCode)
-      .send(pageContext.httpResponse.body)
+    const { httpResponse } = pageContext
+    if (!httpResponse) return next()
+    const { statusCode, body } = httpResponse
+    res.status(statusCode).send(body)
   })
 
   const port = process.env.PORT || 3000

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="props.is404">
+  <div v-if="is404">
     <h1>404 Page Not Found</h1>
     <p>This page could not be found.</p>
   </div>
@@ -10,5 +10,5 @@
 </template>
 
 <script setup>
-const props = defineProps(['is404'])
+defineProps(['is404'])
 </script>

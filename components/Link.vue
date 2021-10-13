@@ -1,6 +1,6 @@
 <template>
   <a
-    :class="{ active: $pageContext.urlPathname === $attrs.href }"
+    :class="{ active: urlPathname === href }"
     :href="getPathWithLocale(href, targetLocale || locale)"
   >
     <slot />
@@ -10,8 +10,7 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 import { getPathWithLocale } from '../i18n/control'
-
-const { locale } = useI18n()
+import { usePageContext } from '~/renderer/usePageContext'
 
 defineProps({
   href: {
@@ -24,13 +23,17 @@ defineProps({
     default: '',
   },
 })
+const { urlPathname } = usePageContext()
+const { locale } = useI18n()
 </script>
 
 <style scoped>
 a {
-  padding: 3px 10px;
+  text-decoration: none;
+  color: inherit;
 }
+
 a.active {
-  background-color: #eee;
+  color: green;
 }
 </style>
