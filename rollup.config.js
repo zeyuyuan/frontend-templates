@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment,@typescript-eslint/restrict-template-expressions,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-argument */
 import { terser } from "rollup-plugin-terser";
 import pluginTypescript from "@rollup/plugin-typescript";
 import pluginCommonjs from "@rollup/plugin-commonjs";
@@ -8,6 +9,7 @@ import dts from "rollup-plugin-dts";
 import pkg from "./package.json";
 
 const moduleName = pkg.name.replace(/^@.*\//, "");
+const browser = "dist/packagename.js";
 const inputFileName = "src/index.ts";
 const { author } = pkg;
 const banner = `
@@ -25,14 +27,14 @@ export default [
     output: [
       {
         name: moduleName,
-        file: pkg.browser,
+        file: browser,
         format: "iife",
         sourcemap: "inline",
         banner,
       },
       {
         name: moduleName,
-        file: pkg.browser.replace(".js", ".min.js"),
+        file: browser.replace(".js", ".min.js"),
         format: "iife",
         sourcemap: "inline",
         banner,
